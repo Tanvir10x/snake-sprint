@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101827" />
+  <title>Snake Sprint</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <section id="authView" class="auth-card">
+      <div class="brand-mark">S</div>
+      <p class="eyebrow">WELCOME TO</p>
+      <h1>Snake Sprint</h1>
+      <p class="muted">A tiny game. A fresh start.</p>
+      <div class="tabs">
+        <button class="tab active" id="registerTab" type="button">Register</button>
+        <button class="tab" id="loginTab" type="button">Login</button>
+      </div>
+      <form id="phoneForm">
+        <label for="phone">Mobile number</label>
+        <div class="phone-row">
+          <select id="countryCode" aria-label="Country calling code">
+            <option value="+880">🇧🇩 +880</option><option value="+1">🇺🇸 +1</option>
+            <option value="+44">🇬🇧 +44</option><option value="+91">🇮🇳 +91</option>
+            <option value="+971">🇦🇪 +971</option><option value="+61">🇦🇺 +61</option>
+            <option value="+81">🇯🇵 +81</option>
+          </select>
+          <input id="phone" type="tel" inputmode="tel" placeholder="1XXXXXXXXX" required />
+        </div>
+        <div id="recaptcha-container"></div>
+        <button class="primary full" type="submit" id="sendOtpBtn">Get OTP</button>
+      </form>
+      <form id="otpForm" class="hidden">
+        <label for="otp">Enter verification code</label>
+        <input id="otp" class="otp-input" inputmode="numeric" maxlength="6" placeholder="6-digit code" required />
+        <p class="hint" id="otpHint">Enter the code sent to your phone.</p>
+        <button class="primary full" type="submit" id="verifyBtn">Verify & continue</button>
+        <button class="text-button" type="button" id="resendBtn">Resend OTP</button>
+        <button class="text-button subdued" type="button" id="changeNumberBtn">Change phone number</button>
+      </form>
+      <p id="authStatus" class="status" role="status" aria-live="polite"></p>
+      <p class="small muted">Phone verification is protected by Firebase reCAPTCHA and provider safeguards.</p>
+    </section>
+
+    <section id="gameView" class="game-card hidden">
+      <header class="game-header">
+        <div><p class="eyebrow">SNAKE SPRINT</p><h1>Ready to play?</h1></div>
+        <button class="outline" id="logoutBtn">Log out</button>
+      </header>
+      <div class="stats">
+        <div><span class="stat-label">SCORE</span><strong id="score">0</strong></div>
+        <div><span class="stat-label">BEST</span><strong id="best">0</strong></div>
+      </div>
+      <canvas id="board" width="400" height="400" aria-label="Snake game board"></canvas>
+      <p id="gameMessage" class="game-message">Press Start to play</p>
+      <div class="game-actions"><button class="primary" id="startBtn">Start game</button><button class="outline" id="pauseBtn">Pause</button></div>
+      <div class="controls" aria-label="Touch controls">
+        <button data-dir="up" aria-label="Up">↑</button>
+        <div><button data-dir="left" aria-label="Left">←</button><button data-dir="down" aria-label="Down">↓</button><button data-dir="right" aria-label="Right">→</button></div>
+      </div>
+      <p class="small muted">Use arrow keys or touch controls. Eat the glowing dots and avoid the walls and your tail.</p>
+    </section>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
